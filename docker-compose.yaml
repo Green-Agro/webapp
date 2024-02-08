@@ -1,8 +1,0 @@
-services:
-  payment:
-    build: ./payment
-    container_name: frontend
-    ports:
-      - '3000:3000'
-    stdin_open: true
-    tty: true

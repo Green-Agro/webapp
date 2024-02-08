@@ -25,7 +25,7 @@ function TelebirrB2B() {
       const formattedAmount = parseFloat(amount).toFixed(2).toString();
 
       
-      fetch("http://164.160.187.141/:7000/api/telebirr/pay", {
+      fetch("http://196.189.118.76:8000/api/telebirr/pay", {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -39,7 +39,7 @@ function TelebirrB2B() {
         .then((response) => {
           
           console.log(response)
-          window.self(response.url.trim(), "_self");
+          window.open(response.url.trim(), "_self");
         })
         .catch((err) => console.log("ERROR: ", err));
         //setError("An error occurred while processing the payment. Please try again later.");
