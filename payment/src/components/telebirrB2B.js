@@ -20,29 +20,61 @@ function TelebirrB2B() {
   const formattedAmount = parseFloat(amount).toFixed(2).toString();
 
   
-  const handleFetCH=()=>{
-     console.log("fetch")
-  try {
-    axios.post('http://196.189.118.76:3000/api/telebirr/pay',{
-      title: "Payment request",
-                amount: formattedAmount,
-                transaction_id: transactionId,
-                merchant_short_code: shortCode,
-                merchant_app_id: merchant_app_id,
-    })
-    .then(response => {
-      console.log("response",response.data)
-      window.open(response.data.url.trim(), "_self");
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-      setError(error.toString())
-    });
-    }catch(e){
-console.log("error ::", e);
+  const handleFetCH = () => {
+    console.log("fetch");
+  
+    const errors = [];
+  
+    // Check if formattedAmount field is empty
+    if (!amount) {
+      errors.push("Amount field is required");
     }
-  }
-
+  
+    // Check if transactionId field is empty
+    if (!transactionId) {
+      errors.push("Transaction ID field is required");
+    }
+  
+    // Check if shortCode field is empty
+    if (!shortCode) {
+      errors.push("Short Code field is required");
+    }
+  
+    // Check if merchant_app_id field is empty
+    if (!merchant_app_id) {
+      errors.push("Merchant App ID field is required");
+    }
+  
+    // If there are any errors, set the error state and return
+    if (errors.length > 0) {
+      const errorMessage = errors.join(", ");
+      console.error("Errors:", errorMessage);
+      setError(errorMessage);
+      return;
+    }
+  
+    try {
+      axios
+        .post("http://196.189.118.76:3000/api/telebirr/pay", {
+          title: "Payment request",
+          amount: formattedAmount,
+          transaction_id: transactionId,
+          merchant_short_code: shortCode,
+          merchant_app_id: merchant_app_id,
+        })
+        .then((response) => {
+          console.log("response", response.data);
+          window.open(response.data.url.trim(), "_self");
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+          setError(error.toString());
+        });
+    } catch (e) {
+      console.log("error:", e);
+      setError(e.toString());
+    }
+  };
   
   useEffect(() => {
     handleFetCH()
