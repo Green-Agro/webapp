@@ -42,7 +42,7 @@ function TelebirrB2B() {
           window.open(response.url.trim(), "_self");
         })
         .catch((err) => console.log("ERROR: ", err));
-        //setError("An error occurred while processing the payment. Please try again later.");
+        setError("An error occurred while processing the payment. Please try again later.");
   }, []);
 
   return (

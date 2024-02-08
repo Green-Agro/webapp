@@ -13,7 +13,7 @@ RUN npm install
 COPY . .
 
 # start app
-RUN npm start
+
 
 
 EXPOSE 3000
