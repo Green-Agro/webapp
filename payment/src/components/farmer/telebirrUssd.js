@@ -8,10 +8,10 @@ function TelebirrUssd() {
   const [loading, setLoading] = useState(true);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   //console.log
-  const {id} = useParams()
+  const id = useParams()
 
   useEffect(() => {
-    const socket = io('http://164.160.187.141:7000', {
+    const socket = io('https://api.lersha.com', {
       query: { "order_id": `${id}` }
     });
 
