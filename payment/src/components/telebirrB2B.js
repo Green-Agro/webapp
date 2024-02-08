@@ -25,7 +25,7 @@ function TelebirrB2B() {
       const formattedAmount = parseFloat(amount).toFixed(2).toString();
 
       
-      fetch("https://api.lersha.com/api/telebirr/pay", {
+      fetch("http://196.189.118.76:3000/api/telebirr/pay", {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
