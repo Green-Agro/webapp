@@ -7,7 +7,7 @@ function Loading() {
    
       
         <div className="loader"></div>
-        <h2>watting for farmer to pay</h2>
+        <h2>Waiting for farmer to pay</h2>
       
 
   </div>
