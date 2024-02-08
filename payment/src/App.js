@@ -11,7 +11,7 @@ function App() {
       <Router>
       <Routes>
         <Route path="/" element={< TelebirrB2B/>} />
-        <Route path="/telebirr/ussd" element={<TelebirrUssd />} /> 
+        <Route path="/telebirr/:id" element={<TelebirrUssd />} /> 
       </Routes>
     </Router>
       
