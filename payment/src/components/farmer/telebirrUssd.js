@@ -34,7 +34,7 @@ function TelebirrUssd() {
     });
 
     
-  }, []);
+  });
 
   if (loading) {
     return <Loading />;

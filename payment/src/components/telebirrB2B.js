@@ -1,7 +1,6 @@
 import  { useEffect,useState } from 'react';
 import axios from 'axios'
 import './loader.css';
-import { redirect } from 'react-router-dom';
 
 function TelebirrB2B() {
   const [error, setError] = useState(null);
@@ -14,7 +13,6 @@ function TelebirrB2B() {
   const transactionId = urlParams.get('transaction_id');
   const shortCode = urlParams.get('short_code');
   const merchant_app_id = urlParams.get('merchant_app_id');
-  const [url,seturl]=useState('')
   console.log(amount,"amount")
   console.log(transactionId,"transactionId")
   const formattedAmount = parseFloat(amount).toFixed(2).toString();
@@ -107,7 +105,7 @@ function TelebirrB2B() {
 //       }
 
       //  setError("An error occurred while processing the payment. Please try again later.");
-  }, []);
+  });
 
   return (
     <div className="container">
