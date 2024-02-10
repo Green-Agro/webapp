@@ -3,12 +3,14 @@ import { useParams } from 'react-router-dom';
 import Loading from './Loading';
 import SuccessPage from '../SuccessPage';
 import io from 'socket.io-client';
+import PaymentFaild from '../paymentFaild';
 
 function TelebirrUssd() {
   const [loading, setLoading] = useState(true);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
-  //console.log
-  const id = useParams()
+  const [paymentFaild, setPaymentFaild] = useState(false);
+
+  const {id} = useParams();
 
   useEffect(() => {
     const socket = io('https://api.lersha.com', {
@@ -17,15 +19,30 @@ function TelebirrUssd() {
 
     socket.on('PAID', (data) => {
       console.log('Event received:', data);
-      setLoading(false)
-      setPaymentSuccess(true);
+      if(data.success===200){
+        setLoading(false);
+        setPaymentSuccess(true);
+      }else if(data.success===400){
+        setLoading(false);
+        setPaymentFaild(true);
+
+      }
+    
+      
 
       // Redirect the user or perform any other actions
     });
+    // socket.on('UNPAID', (data) => {
+    //   console.log('Event received:', data);
+    //   setLoading(false);
+    //   setPaymentSuccess(false);
+    //   setPaymentFaild(true);
+
+    //   // Redirect the user or perform any other actions
+    // });
 
     socket.on('connect', () => {
       console.log('WebSocket connection established.');
-
     });
 
     socket.on('disconnect', () => {
@@ -33,7 +50,13 @@ function TelebirrUssd() {
       // Perform any necessary actions after the connection is closed
     });
 
-    
+    // Set a timeout of 10 seconds for the loading state
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 120000);
+
+    // Cleanup function to clear the timeout when the component is unmounted
+    return () => clearTimeout(timeout);
   });
 
   if (loading) {
@@ -43,8 +66,11 @@ function TelebirrUssd() {
   if (paymentSuccess) {
     return <SuccessPage />;
   }
+  if (paymentFaild) {
+    return <PaymentFaild />;
+  }
 
-  //return <div>Other components...</div>;
+  // return <div>Other components...</div>;
 }
 
 export default TelebirrUssd;
