@@ -1,12 +1,16 @@
 import React from 'react';
-import './successPage.css';
-import Illustration from '../assets/Illustration.png';
+import './PaymentFaild.css';
+import fail from '../assets/fail.png';
 
 
 function PaymentFaild() {
   return (
     <div class="container">
-    <h2>faild to pay  </h2>
+     <div>   <img src={fail} alt="fail" style={{ width: '150px', height: '150px' }} /> </div>   
+     <h1>! Payment Faild</h1>   
+    <h2> Payment is not paid successfully. <br></br> please contact farmer and try again.  </h2>
+    <p>Thank you for using lersha app</p>
+
 
 </div>
 )

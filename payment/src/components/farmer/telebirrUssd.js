@@ -5,10 +5,13 @@ import SuccessPage from '../SuccessPage';
 import io from 'socket.io-client';
 import PaymentFaild from '../paymentFaild';
 
+
 function TelebirrUssd() {
   const [loading, setLoading] = useState(true);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [paymentFaild, setPaymentFaild] = useState(false);
+  const [timeoutExpired, setTimeoutExpired] = useState(false); // State for timeout message
+
 
   const {id} = useParams();
 
@@ -53,6 +56,7 @@ function TelebirrUssd() {
     // Set a timeout of 10 seconds for the loading state
     const timeout = setTimeout(() => {
       setLoading(false);
+      setTimeoutExpired(true);
     }, 120000);
 
     // Cleanup function to clear the timeout when the component is unmounted
@@ -69,8 +73,12 @@ function TelebirrUssd() {
   if (paymentFaild) {
     return <PaymentFaild />;
   }
-
-  // return <div>Other components...</div>;
+  if (timeoutExpired) {
+    return <div>
+      <h1>! TIMEOUT</h1>
+      <p>Payment process timed out. Please try again later.</p>
+      </div>;
+  }
 }
 
 export default TelebirrUssd;
