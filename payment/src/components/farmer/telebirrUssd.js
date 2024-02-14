@@ -4,7 +4,7 @@ import Loading from './Loading';
 import SuccessPage from '../SuccessPage';
 import io from 'socket.io-client';
 import PaymentFaild from '../paymentFaild';
-
+import Timeout from './timeout';
 
 function TelebirrUssd() {
   const [loading, setLoading] = useState(true);
@@ -74,10 +74,7 @@ function TelebirrUssd() {
     return <PaymentFaild />;
   }
   if (timeoutExpired) {
-    return <div>
-      <h1>! TIMEOUT</h1>
-      <p>Payment process timed out. Please try again later.</p>
-      </div>;
+    return <Timeout/>
   }
 }
 
