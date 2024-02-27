@@ -1,0 +1,12 @@
+.image{
+    display: flex;
+    justify-content: center;
+    margin-top: 45%;
+}
+
+h3{
+    display: flex;
+    justify-content: center;
+  font-weight: bold;
+  font-size:1.7em;
+}
