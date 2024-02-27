@@ -13,7 +13,9 @@ function App() {
       <Routes>
         <Route path="/" element={< TelebirrB2B/>} />
         <Route path="/telebirr/:id" element={<TelebirrUssd />} /> 
+
         <Route path="/login" element={<Login></Login>} />
+
 
       </Routes>
     </Router>
