@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './authentication.css';
+import Illustration from '../assets/Illustration.png';
 
 const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -18,9 +21,11 @@ const Login = () => {
 
       if (response.status === 200) {
         setIsLoggedIn(true);
+        toast.success('Login Successful', { autoClose: 3000 });
       }
     } catch (error) {
       console.log(error);
+      toast.error('Error occurred. Please try again.',error, { autoClose: 3000 });
       // Handle error states or display error messages to the user
     }
   };
@@ -33,10 +38,11 @@ const Login = () => {
 
   return (
     <div>
+      <ToastContainer />
       {isLoggedIn ? (
-        <div>
-          <h1>Welcome, {username}!</h1>
-          <button onClick={handleLogout}>Logout</button>
+        <div className="success">
+          <div>   <img src={Illustration} alt="sucessful"/> </div>
+          <h2>you have  deactivated your account sucessfuly!</h2>
         </div>
       ) : (
         <div>
