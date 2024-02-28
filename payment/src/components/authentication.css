@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 
-body {
-  background: #f3eded; 
-  font-family: Raleway, sans-serif;
-  color: #c7c2c2;
-}
 
 .login {
   margin: 100px auto;
@@ -12,8 +7,8 @@ body {
   max-width: 300px;
   border-radius: 5px;
   background: #fff;
-  
-  box-shadow: 1px 1px 1px #666;
+  border: 1px 1px 1px 1px #666;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
  
 }
   .login input {
