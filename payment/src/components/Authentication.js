@@ -14,7 +14,7 @@ const Login = () => {
     e.preventDefault(); // Prevents the form from submitting and refreshing the page
 
     try {
-      const response = await axios.post('http://164.160.187.141:7000/api/iam/la/deactivate', {
+      const response = await axios.post('https://api.lersha.com/api/iam/la/deactivate', {
         username,
         password,
       });
