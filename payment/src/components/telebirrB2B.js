@@ -53,7 +53,7 @@ function TelebirrB2B() {
   
     try {
       axios
-        .post("http://164.160.187.141:7000/api/telebirr/pay", {
+      .post("http://196.189.118.76:3000/api/telebirr/pay", {
           title: "Payment request",
           amount: formattedAmount,
           transaction_id: transactionId,

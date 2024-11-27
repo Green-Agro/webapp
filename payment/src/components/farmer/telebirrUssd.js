@@ -16,7 +16,7 @@ function TelebirrUssd() {
   const {id} = useParams();
 
   useEffect(() => {
-    const socket = io('https://api.lersha.com', {
+    const socket = io('http://164.160.187.141:7000', {
       query: { "order_id": `${id}` }
     });
 
