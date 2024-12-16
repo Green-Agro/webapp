@@ -8,7 +8,7 @@ function PaymentFaild() {
     <div className="container">
      <div>   <img src={fail} alt="fail" style={{ width: '150px', height: '150px' }} /> </div>   
      <h1>! Payment Faild</h1>   
-    <h2> please contact the farmer and try again.  </h2>
+    <h2> please contact our call center at 7860.  </h2>
     <p>Thank you for using lersha app!</p>
 
 
